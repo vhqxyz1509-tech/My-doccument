@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h1 { text-align: center; color: #007bff; }
+
+.upload-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+input, button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="file"] { flex: 2; }
+input[type="text"] { flex: 1; }
+
+button {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+button:hover { background-color: #218838; }
+
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.doc-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.doc-card h3 { margin: 0 0 10px 0; font-size: 18px; word-break: break-all; }
+.doc-card p { margin: 5px 0; color: #666; font-size: 14px; }
+
+.btn-download {
+    display: block;
+    text-align: center;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.btn-download:hover { background: #0056b3; }
