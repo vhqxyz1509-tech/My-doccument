@@ -3,51 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kho Tài Liệu Cá Nhân</title>
+    <title>Personal File Explorer</title>
     <link rel="stylesheet" href="book.css">
     <!-- Nhúng thư viện Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <div class="container">
-        <h1>📚 KHO TÀI LIỆU CỦA TÔI</h1>
-
-        <!-- Khu vực Tải lên tài liệu nâng cấp thành Drag & Drop zone -->
-        <div class="upload-zone" id="drop-zone">
-            <p>Kéo thả tệp vào đây hoặc</p>
-            <div class="upload-controls">
-                <input type="file" id="file-input">
-                <input type="text" id="category-input" placeholder="Danh mục (vd: Học tập, Sách...)">
-                <button id="upload-btn">Tải lên</button>
+    <div class="explorer-container">
+        <!-- 1. THANH ĐIỀU HƯỚNG BÊN TRÁI (SIDEBAR) -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span>🗂️ MyDrive</span>
             </div>
-        </div>
+            
+            <!-- Khu vực tải lên nằm gọn trong Sidebar -->
+            <div class="upload-box" id="drop-zone">
+                <p>Kéo thả file hoặc</p>
+                <label for="file-input" class="btn-select-file">➕ Tải tệp lên</label>
+                <input type="file" id="file-input" style="display: none;">
+                <input type="text" id="category-input" placeholder="Nhập tên thư mục...">
+                <button id="upload-btn">Bắt đầu tải</button>
+            </div>
 
-        <hr>
+            <nav class="sidebar-menu">
+                <p class="menu-title">Thư mục / Danh mục</p>
+                <ul id="category-tree">
+                    <li class="active" data-category="all">📁 Tất cả tài liệu</li>
+                    <!-- Các danh mục khác tự động render ở đây -->
+                </ul>
+            </nav>
+        </aside>
 
-        <!-- Thanh bộ lọc danh mục nhanh -->
-        <div class="filter-section">
-            <label for="category-filter">📁 Lọc theo danh mục:</label>
-            <select id="category-filter">
-                <option value="all">Tất cả tài liệu</option>
-            </select>
-        </div>
+        <!-- 2. KHU VỰC HIỂN THỊ CHÍNH (MAIN CONTENT) -->
+        <main class="main-content">
+            <!-- Thanh công cụ phía trên (Toolbar) -->
+            <header class="toolbar">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Tìm kiếm tài liệu theo tên...">
+                </div>
+                <div class="view-options">
+                    <button id="view-grid-btn" class="active" title="Xem dạng lưới">⣿</button>
+                    <button id="view-list-btn" title="Xem dạng danh sách">☰</button>
+                </div>
+            </header>
 
-        <!-- Khu vực hiển thị danh sách file -->
-        <h2>Danh sách tài liệu đã lưu</h2>
-        <div id="document-list" class="doc-grid">
-            <p>Đang tải tài liệu...</p>
-        </div>
+            <!-- Tiêu đề phân vùng nội dung hiện tại -->
+            <div class="content-header">
+                <h2 id="current-folder-title">📁 Tất cả tài liệu</h2>
+                <span id="file-count-status" class="file-status">Đang quét tệp...</span>
+            </div>
+
+            <!-- Vùng hiển thị danh sách tài liệu -->
+            <div id="document-list" class="doc-grid">
+                <p>Đang tải tài liệu từ hệ thống...</p>
+            </div>
+        </main>
     </div>
 
-    <!-- Modal Xem nhanh tài liệu (Hỗ trợ Ảnh, PDF, Audio, Video) -->
+    <!-- 3. CỬA SỔ XEM NHANH (PREVIEW MODAL) -->
     <div id="preview-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h3 id="modal-title">Tên tài liệu</h3>
-            <div id="modal-body">
-                <!-- Nội dung preview sẽ tự động chèn vào đây -->
-            </div>
+            <div id="modal-body"></div>
         </div>
     </div>
 
