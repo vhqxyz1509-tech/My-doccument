@@ -3,7 +3,7 @@ const SUPABASE_URL = "https://wmrwpgkswtyhnbwakqof.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_IW4hkBCbFwLP8oYTzM61SQ_piURcKbk";
 
 // Khởi tạo client Supabase (Dòng này ở file cũ bị thiếu)
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const BUCKET_NAME = "Tai_lieu"; 
 
 // Biến lưu trữ toàn bộ danh sách để phục vụ bộ lọc Client-side nhanh hơn
