@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kho Tài Liệu Cá Nhân</title>
     <link rel="stylesheet" href="book.css">
-    <!-- Nhúng thư viện Supabase CDN để gọi được lệnh ở file script.js -->
+    <!-- Nhúng thư viện Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -13,20 +13,41 @@
     <div class="container">
         <h1>📚 KHO TÀI LIỆU CỦA TÔI</h1>
 
-        <!-- Khu vực Tải lên tài liệu -->
-        <div class="upload-section">
-            <input type="file" id="file-input">
-            <input type="text" id="category-input" placeholder="Nhập danh mục (vd: Học tập, Sách...)">
-            <button id="upload-btn">Tải lên</button>
+        <!-- Khu vực Tải lên tài liệu nâng cấp thành Drag & Drop zone -->
+        <div class="upload-zone" id="drop-zone">
+            <p>Kéo thả tệp vào đây hoặc</p>
+            <div class="upload-controls">
+                <input type="file" id="file-input">
+                <input type="text" id="category-input" placeholder="Danh mục (vd: Học tập, Sách...)">
+                <button id="upload-btn">Tải lên</button>
+            </div>
         </div>
 
         <hr>
 
+        <!-- Thanh bộ lọc danh mục nhanh -->
+        <div class="filter-section">
+            <label for="category-filter">📁 Lọc theo danh mục:</label>
+            <select id="category-filter">
+                <option value="all">Tất cả tài liệu</option>
+            </select>
+        </div>
+
         <!-- Khu vực hiển thị danh sách file -->
         <h2>Danh sách tài liệu đã lưu</h2>
         <div id="document-list" class="doc-grid">
-            <!-- Tài liệu sẽ tự động hiển thị ở đây nhờ JavaScript -->
             <p>Đang tải tài liệu...</p>
+        </div>
+    </div>
+
+    <!-- Modal Xem nhanh tài liệu (Hỗ trợ Ảnh, PDF, Audio, Video) -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">Tên tài liệu</h3>
+            <div id="modal-body">
+                <!-- Nội dung preview sẽ tự động chèn vào đây -->
+            </div>
         </div>
     </div>
 
