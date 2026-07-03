@@ -1,5 +1,5 @@
 // 1. Cấu hình kết nối Supabase
-const SUPABASE_URL = "https://wmrwpgkswtyhnbwakqof.supabase.coL"; 
+const SUPABASE_URL = "https://wmrwpgkswtyhnbwakqof.supabase.co"; 
 const SUPABASE_ANON_KEY = "sb_publishable_IW4hkBCbFwLP8oYTzM61SQ_piURcKbk";
 
 const BUCKET_NAME = "Tai_lieu"; // Tên Bucket bạn tạo trong mục Storage
